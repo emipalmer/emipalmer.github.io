@@ -96,6 +96,20 @@ const CONTENT = {
   ----------------------------------------------------------------------- */
   projects: [
     {
+      slug: 'tari', name: 'Tari', tile: 'tari', icon: 'tari',
+      meta: ['oct 2026', 'design & build', 'c0mpiled-15 hackathon'],
+      award: '1st place Solo Hackers  \u00b7  3rd place Bloomerang',
+      blurb: 'An AI teammate for volunteer coordinators that lives in iMessage. It tracks hours, syncs birthdays to Google Calendar and fills out forms by text.',
+      short: 'An AI teammate for nonprofits, in iMessage.',
+      tags: ['TypeScript', 'MongoDB', 'AWS', 'Google Calendar'],
+      body: [
+        'Volunteer coordinators run nonprofit programs across spreadsheets, sign-up forms, calendars and endless texts. When tracking hours, birthdays and paperwork slips, volunteers drift away.',
+        'Tari is an AI teammate coordinators text like a coworker, right in iMessage. \u201cMarcus covered Saturday, 3 hours\u201d updates his record. It fills out forms by text, syncs birthdays and events to Google Calendar, and a dashboard shows hours, retention and who needs a check-in.',
+        'I built it solo at c0mpiled-15: a TypeScript agent on a Mac mini sends and receives iMessages, and MongoDB holds the records behind the replies and the dashboard I designed in Figma. Coordinators already reach volunteers by text, so Tari lives in that same thread.',
+        'It took 1st place in the Solo Hackers track, sponsored by Penn State MICS (Multicultural Innovators in Computer Science), and 3rd in the Bloomerang track, where their team gave positive feedback. I\u2019ve since started a waitlist and shared it with coordinators on Reddit to test demand.'
+      ]
+    },
+    {
       slug: 'worklog', name: 'WorkLog', tile: 'worklog', icon: 'worklog',
       meta: ['2026', 'design & build', 'personal project'],
       blurb: 'Log what you did each day; it turns those notes into resume bullets, STAR stories and a skills list when you need them.',
