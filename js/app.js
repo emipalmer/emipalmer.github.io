@@ -287,6 +287,8 @@
       prose.append(strip);
     }
     project.body.forEach(text => prose.append(el('p', { text })));
+    // Optional outside links (a demo video, a repo), styled like home's.
+    if (project.links) prose.append(renderBlock({ type: 'links', items: project.links }));
     const tags = el('ul', { className: 'card__tech detail__tags' });
     project.tags.forEach(t => tags.append(el('li', { text: t })));
     prose.append(tags);

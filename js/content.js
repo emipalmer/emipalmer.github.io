@@ -93,20 +93,22 @@ const CONTENT = {
        meta   : dates, then role(s)          body  : detail-page paragraphs
        image  : shown on the detail page     screens: shown in the phone on
                                                       the detail page (1:1)
+       links  : buttons under the write-up (a demo, a repo); open in a new tab
   ----------------------------------------------------------------------- */
   projects: [
     {
       slug: 'tari', name: 'Tari', tile: 'tari', icon: 'tari',
       meta: ['oct 2026', 'design & build', 'c0mpiled-15 hackathon'],
       award: '1st place Solo Hackers  \u00b7  3rd place Bloomerang',
-      blurb: 'An AI teammate for volunteer coordinators that lives in iMessage. It tracks hours, syncs birthdays to Google Calendar and fills out forms by text.',
+      blurb: 'An AI teammate for volunteer coordinators that lives in iMessage. I built it solo in 8 hours, and it placed twice at c0mpiled-15!',
       short: 'An AI teammate for nonprofits, in iMessage.',
       tags: ['TypeScript', 'MongoDB', 'AWS', 'Google Calendar'],
+      links: [{ label: 'watch the demo', href: 'https://youtu.be/BR4wUO52DOo' }],
       body: [
-        'Volunteer coordinators run nonprofit programs across spreadsheets, sign-up forms, calendars and endless texts. When tracking hours, birthdays and paperwork slips, volunteers drift away.',
-        'Tari is an AI teammate coordinators text like a coworker, right in iMessage. \u201cMarcus covered Saturday, 3 hours\u201d updates his record. It fills out forms by text, syncs birthdays and events to Google Calendar, and a dashboard shows hours, retention and who needs a check-in.',
-        'I built it solo at c0mpiled-15: a TypeScript agent on a Mac mini sends and receives iMessages, and MongoDB holds the records behind the replies and the dashboard I designed in Figma. Coordinators already reach volunteers by text, so Tari lives in that same thread.',
-        'It took 1st place in the Solo Hackers track, sponsored by Penn State MICS (Multicultural Innovators in Computer Science), and 3rd in the Bloomerang track, where their team gave positive feedback. I\u2019ve since started a waitlist and shared it with coordinators on Reddit to test demand.'
+        'Volunteer coordinators keep whole nonprofit programs running out of spreadsheets, sign-up forms, calendars and a lot of texts. When tracking hours, birthdays and paperwork slips, volunteers quietly drift away.',
+        'So I built Tari, an AI teammate you just text like a coworker, right in iMessage. Send \u201cMarcus covered Saturday, 3 hours\u201d and his record updates. It fills out forms over text, puts birthdays and events on your Google Calendar, and has a dashboard showing hours, retention and who could use a check-in.',
+        'I built it solo in 8 hours at c0mpiled-15! A TypeScript agent on a Mac mini sends and receives the iMessages, and MongoDB holds the records behind the replies and the dashboard (which I designed in Figma first). Coordinators already text their volunteers, so I wanted Tari to live in that same thread.',
+        'Tari won 1st place in the Solo Hackers track, sponsored by Penn State MICS (Multicultural Innovators in Computer Science), and 3rd in the Bloomerang track, where their team gave positive feedback. Since then I\u2019ve started a waitlist, shared it on Reddit and have been getting feedback from nonprofit workers. Stay tuned!'
       ]
     },
     {
