@@ -352,7 +352,11 @@ fixed: esdrs is "design & product lead", Dementia Care MR is "software developer
 
 **Order: tari, worklog, esdrs, dementia mr, gemini add-on, this site, revibe** —
 featured projects first, design-only last. Tari leads: newest, and it placed
-twice at c0mpiled-15 (1st Solo Hackers, 3rd Bloomerang). The card list and the phone's
+twice at c0mpiled-15 (1st Solo Hackers, 3rd Bloomerang).
+
+A project can carry `links` (Tari's demo video): outlined buttons under the
+write-up that open in a new tab. Video is linked, not embedded, because the
+desktop page never scrolls and a player would push the write-up off screen. The card list and the phone's
 projects screen use the same order, so the two never disagree.
 
 Contact has no intro line; the `say hi.` headline is enough. The this-site detail
