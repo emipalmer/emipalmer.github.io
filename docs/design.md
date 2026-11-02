@@ -354,8 +354,8 @@ fixed: esdrs is "design & product lead", Dementia Care MR is "software developer
 featured projects first, design-only last. Tari leads: newest, and it placed
 twice at c0mpiled-15 (1st Solo Hackers, 3rd Bloomerang).
 
-A project can carry `links` (Tari's demo video): outlined buttons under the
-write-up that open in a new tab. Video is linked, not embedded, because the
+A project can carry `links` (Tari's demo video): outlined buttons that open
+in a new tab, on the same row as the tags so they cost no extra height. Video is linked, not embedded, because the
 desktop page never scrolls and a player would push the write-up off screen. The card list and the phone's
 projects screen use the same order, so the two never disagree.
 

@@ -105,10 +105,11 @@ const CONTENT = {
       tags: ['TypeScript', 'MongoDB', 'AWS', 'Google Calendar'],
       links: [{ label: 'watch the demo', href: 'https://youtu.be/BR4wUO52DOo' }],
       body: [
-        'Volunteer coordinators keep whole nonprofit programs running out of spreadsheets, sign-up forms, calendars and a lot of texts. When tracking hours, birthdays and paperwork slips, volunteers quietly drift away.',
-        'So I built Tari, an AI teammate you just text like a coworker, right in iMessage. Send \u201cMarcus covered Saturday, 3 hours\u201d and his record updates. It fills out forms over text, puts birthdays and events on your Google Calendar, and has a dashboard showing hours, retention and who could use a check-in.',
-        'I built it solo in 8 hours at c0mpiled-15! A TypeScript agent on a Mac mini sends and receives the iMessages, and MongoDB holds the records behind the replies and the dashboard (which I designed in Figma first). Coordinators already text their volunteers, so I wanted Tari to live in that same thread.',
-        'Tari won 1st place in the Solo Hackers track, sponsored by Penn State MICS (Multicultural Innovators in Computer Science), and 3rd in the Bloomerang track, where their team gave positive feedback. Since then I\u2019ve started a waitlist, shared it on Reddit and have been getting feedback from nonprofit workers. Stay tuned!'
+        'Volunteer coordinators keep whole nonprofit programs running out of spreadsheets, sign-up forms, calendars and a lot of texts. When tracking hours, birthdays and paperwork slips, volunteers are no longer engaged.',
+        'So I built Tari, an AI teammate you just text like a coworker, right in iMessage. Send \u201cSteve covered Saturday, 3 hours\u201d and his record updates. It fills out forms over text, puts birthdays and events on your Google Calendar, and has a dashboard showing hours, retention and who could use a check-in.',
+        'I built it solo in 8 hours at c0mpiled-15! For this, I had a TypeScript agent on a Mac mini send and receive the iMessages, and MongoDB holds the records behind the replies and the dashboard (which I designed in Figma first). Coordinators already text their volunteers, so I wanted Tari to live in that same thread.',
+        'Tari won 1st place in the Solo Hackers track, sponsored by Penn State MICS (Multicultural Innovators in Computer Science), and 3rd in the Bloomerang track!',
+        'Check out the demo video I created here!'
       ]
     },
     {
