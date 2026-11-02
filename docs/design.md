@@ -346,12 +346,13 @@ Tab titles read "Emilia Palmer — Software Engineer" on home and
 Open Graph tags point at it by absolute URL, so update them if the domain
 changes. The favicon is a phone app tile with an italic e.
 
-Six projects: esdrs, Dementia Care MR Simulation, ReVibe, Gemini AI Document
-Add-On, WorkLog, This site. **esdrs is always lowercase** in copy. Roles are
+Seven projects: Tari, esdrs, Dementia Care MR Simulation, ReVibe, Gemini AI
+Document Add-On, WorkLog, This site. **esdrs is always lowercase** in copy. Roles are
 fixed: esdrs is "design & product lead", Dementia Care MR is "software developer".
 
-**Order: worklog, esdrs, dementia mr, gemini add-on, this site, revibe** —
-featured projects first, design-only last. The card list and the phone's
+**Order: tari, worklog, esdrs, dementia mr, gemini add-on, this site, revibe** —
+featured projects first, design-only last. Tari leads: newest, and it placed
+twice at c0mpiled-15 (1st Solo Hackers, 3rd Bloomerang). The card list and the phone's
 projects screen use the same order, so the two never disagree.
 
 Contact has no intro line; the `say hi.` headline is enough. The this-site detail
