@@ -26,6 +26,7 @@ const ICONS = {
   // Lucide's file with a four-point sparkle, redrawn from the Figma tile onto the 24 grid.
   gemini:   '<path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5z"/><path d="M14 2v6h6"/><path d="M11 13l-1.5 3L6 17.5 9.5 19 11 22l1.5-3 3.5-1.5-3.5-1.5z"/>',
   site:     '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
+  thesis:   '<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',  // Lucide graduation-cap
   tari:     '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',  // Lucide message-circle
   revibe:   '<circle cx="12" cy="12" r="8"/><path d="m9 12 2 2 4-4"/>',
 

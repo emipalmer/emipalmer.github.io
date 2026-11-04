@@ -113,6 +113,19 @@ const CONTENT = {
       ]
     },
     {
+      slug: 'thesis', name: 'AI as a Teaching Partner', tile: 'thesis', icon: 'thesis',
+      meta: ['nov 2025 \u2014 present', 'honors thesis'],
+      blurb: 'My honors thesis: a multi-agent AI system that helps teachers design science lessons where students do real science, not just absorb facts.',
+      short: 'Multi-agent AI for science lesson design.',
+      tags: ['Python', 'AWS', 'LLM agents'],
+      body: [
+        'AI in education usually means one of two things: tutors that teach students directly, or tools that save teachers time. My honors thesis sits in between. I\u2019m asking whether AI can help teachers design better science lessons, not just faster ones.',
+        'My earlier evaluation found that single LLMs write molecular biology lessons that are accurate but leave students passive, with little real-world context, little room to investigate and few chances to test ideas. So I\u2019m building a multi-agent system where each agent targets one of those gaps (critiquing the plan, simulating a student, grounding it in real science), the way expert teachers critique and refine their own lessons.',
+        'I compare it against single-model baselines across five protein-biology topics from PDB-101, scoring each plan on a scientific-practice rubric and gathering teacher feedback through questionnaires. Every agent exchange is logged, so teachers can see why a lesson changed, not just the final result.',
+        'It\u2019s built in Python on AWS, and I\u2019m advised by Dr. Rebecca Passonneau. Still in progress, stay tuned!'
+      ]
+    },
+    {
       slug: 'worklog', name: 'WorkLog', tile: 'worklog', icon: 'worklog',
       meta: ['2026', 'design & build', 'personal project'],
       blurb: 'Log what you did each day; it turns those notes into resume bullets, STAR stories and a skills list when you need them.',
