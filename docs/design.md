@@ -38,7 +38,7 @@ CSS custom property names match the Figma variable names exactly.
 | `--tile-a` / `--tile-b` | `#8AAB7F` / `#B5D5C5` | app tile gradient |
 | `--dock` | `#B9CFB6` | phone dock |
 | `--bezel` | `#5A5675` | phone rail |
-| `--pink` / `--peach` | `#CF8D87` / `#FECFBD` | links-screen banner only |
+| `--pink` / `--peach` | `#CF8D87` / `#FECFBD` | links-screen banner; peach also tints the ambient background |
 | `--error` | `#A14A44` | form errors — the pink darkened until it warns |
 
 **Device chrome** — `--white`, `--island`, `--rail-1…4` — are code-only tokens for
@@ -52,6 +52,12 @@ the rest are fixed.
 
 **Type** is Figtree throughout (Google Fonts, has a true italic — the italic is
 load-bearing in every headline).
+
+**Ambient background.** Behind the mint, three faint blooms (tile-b, tile-a and
+peach, at 20–38% and fading to nothing) drift and turn slowly on a 60s
+alternating cycle. It is one fixed, oversized `body::before` moved by transform
+only, so it never repaints content, and its darkest point is barely off mint,
+so text contrast is unchanged. Still under `prefers-reduced-motion`.
 
 Headline 84 on home and on about's arrival state; 46 elsewhere; 40 once about has
 scrolled. Body 17, small 15, phone tile labels 9. **Nothing shrinks below 16px

@@ -65,7 +65,8 @@ assets/             resume.pdf; photos/ holds the site photos
   prefixed `v2 ·`.
 - Panel-follows-nav, and panel-survives-scroll. Both only matter with panels.
 - The resume button in the top-right corner. Resume is a chip on the home page.
-- The lily background art and the sage backdrop panel. The page is plain mint.
+- The lily background art and the sage backdrop panel. The page is mint, with
+  only a faint drifting gradient behind it (see "Ambient background" in `docs/design.md`).
 
 ## Still undecided
 
