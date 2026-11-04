@@ -13,7 +13,8 @@ const LINKS = {
   email:    { label: 'email',    href: `mailto:${EMAIL}`,                          display: EMAIL },
   github:   { label: 'github',   href: 'https://github.com/emipalmer',             display: 'github.com/emipalmer', icon: 'github' },
   linkedin: { label: 'linkedin', href: 'https://linkedin.com/in/emiliaapalmer',    display: 'linkedin.com/in/emiliaapalmer' },
-  resume:   { label: 'resume',   href: 'assets/resume.pdf', icon: 'download' }
+  resume:   { label: 'resume',   href: 'assets/resume.pdf', icon: 'download' },
+  photos:   { label: 'photos',   href: 'https://photos.emiipalmer.com',            display: 'photos.emiipalmer.com' }
 };
 
 const CONTENT = {
@@ -313,7 +314,8 @@ const CONTENT = {
         { label: 'github',   icon: 'github',   href: LINKS.github.href },
         { label: 'linkedin', icon: 'linkedin', href: LINKS.linkedin.href },
         { label: 'resume',   icon: 'resume',   href: LINKS.resume.href },
-        { label: 'email',    icon: 'contact',  href: LINKS.email.href }
+        { label: 'email',    icon: 'contact',  href: LINKS.email.href },
+        { label: 'photos',   icon: 'photos',   href: LINKS.photos.href }
       ]
     }
   ]
