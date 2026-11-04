@@ -377,6 +377,10 @@ Experience holds five roles in two groups, work then leadership. Numbers matter 
 Contact: `mia.annp@gmail.com`, `github.com/emipalmer`,
 `linkedin.com/in/emiliaapalmer`.
 
+The phone's links screen: github, linkedin, resume, email, photos. Photos is
+Mia's photography site, `photos.emiipalmer.com` (two i's — that is the real
+domain, not a typo of `emipalmer`).
+
 Photos live in `assets/photos/`, exported from the Figma originals at 1200px on
 the long edge. Still missing: esdrs and ReVibe screens for the phone demos, a
 WorkLog screenshot, a favicon and a share-preview image.

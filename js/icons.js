@@ -30,6 +30,7 @@ const ICONS = {
   tari:     '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',  // Lucide message-circle
   revibe:   '<circle cx="12" cy="12" r="8"/><path d="m9 12 2 2 4-4"/>',
 
+  photos:   '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',  // Lucide camera
   download: '<path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/>',
   resume:   '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>'
 };
