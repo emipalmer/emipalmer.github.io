@@ -67,6 +67,27 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Ambient light: a few faint blooms of the palette drifting behind the page.
+   Oversized and moved by transform only, so it never repaints the content
+   and its edges never show. Still under reduced motion. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -25%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 32% at 22% 30%, color-mix(in srgb, var(--tile-b) 22%, transparent), transparent 70%),
+    radial-gradient(34% 38% at 78% 68%, color-mix(in srgb, var(--tile-a) 12%, transparent), transparent 70%),
+    radial-gradient(28% 26% at 62% 18%, color-mix(in srgb, var(--peach) 8%, transparent), transparent 70%);
+  animation: ambient-drift 60s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes ambient-drift {
+  from { transform: translate(-5%, -4%) rotate(0deg); }
+  to   { transform: translate(5%, 4%) rotate(10deg); }
+}
+
 img { max-width: 100%; display: block; }
 
 /* `hidden` must win over any display rule (e.g. img above). */
@@ -1150,4 +1171,5 @@ body.phone-away .phone-tab {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
+  body::before { animation: none; }
 }
