@@ -213,7 +213,7 @@ const CONTENT = {
   skills: [
     { label: 'llms & apis', items: ['AWS Bedrock', 'Strands Agents', 'LLM APIs (Mistral, Claude)', 'Prompt Engineering', 'LLM Classification & Structured Extraction', 'LLM Cost Analysis'] },
     { label: 'languages', items: ['Python', 'TypeScript', 'JavaScript', 'Java', 'C', 'Swift', 'SQL', 'HTML/CSS'] },
-    { label: 'frameworks & tools', items: ['AWS', 'Streamlit', 'React', 'MongoDB', 'Docker', 'Git', 'Unity', 'Photon Fusion', 'Linux'] }
+    { label: 'frameworks & tools', items: ['AWS', 'Streamlit', 'React', 'MongoDB', 'Docker', 'Git', 'Unity', 'Photon Fusion', 'Linux', 'Figma'] }
   ],
 
   /* --- Experience --------------------------------------------------------
