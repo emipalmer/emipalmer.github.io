@@ -346,16 +346,20 @@ Tab titles read "Emilia Palmer — Software Engineer" on home and
 Open Graph tags point at it by absolute URL, so update them if the domain
 changes. The favicon is a phone app tile with an italic e.
 
-Seven projects: Tari, esdrs, Dementia Care MR Simulation, ReVibe, Gemini AI
-Document Add-On, WorkLog, This site. **esdrs is always lowercase** in copy. Roles are
+Eight projects: Tari, AI as a Teaching Partner (honors thesis), esdrs, Dementia
+Care MR Simulation, ReVibe, Gemini AI Document Add-On, WorkLog, This site. **esdrs is always lowercase** in copy. Roles are
 fixed: esdrs is "design & product lead", Dementia Care MR is "software developer".
 
-**Order: tari, worklog, esdrs, dementia mr, gemini add-on, this site, revibe** —
-featured projects first, design-only last. Tari leads: newest, and it placed
-twice at c0mpiled-15 (1st Solo Hackers, 3rd Bloomerang).
+**Order: tari, thesis, worklog, esdrs, dementia mr, gemini add-on, this site,
+revibe** — featured projects first, design-only last. Tari leads: newest, and it
+placed twice at c0mpiled-15 (1st Solo Hackers, 3rd Bloomerang).
 
-A project can carry `links` (Tari's demo video): outlined buttons under the
-write-up that open in a new tab. Video is linked, not embedded, because the
+**The thesis claims only what it measures**: lesson-plan quality and teachers'
+perceptions of the plans. There is no classroom deployment, so its copy never
+says it helps students learn.
+
+A project can carry `links` (Tari's demo video): outlined buttons that open
+in a new tab, on the same row as the tags so they cost no extra height. Video is linked, not embedded, because the
 desktop page never scrolls and a player would push the write-up off screen. The card list and the phone's
 projects screen use the same order, so the two never disagree.
 

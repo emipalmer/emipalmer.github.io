@@ -105,10 +105,24 @@ const CONTENT = {
       tags: ['TypeScript', 'MongoDB', 'AWS', 'Google Calendar'],
       links: [{ label: 'watch the demo', href: 'https://youtu.be/BR4wUO52DOo' }],
       body: [
-        'Volunteer coordinators keep whole nonprofit programs running out of spreadsheets, sign-up forms, calendars and a lot of texts. When tracking hours, birthdays and paperwork slips, volunteers quietly drift away.',
-        'So I built Tari, an AI teammate you just text like a coworker, right in iMessage. Send \u201cMarcus covered Saturday, 3 hours\u201d and his record updates. It fills out forms over text, puts birthdays and events on your Google Calendar, and has a dashboard showing hours, retention and who could use a check-in.',
-        'I built it solo in 8 hours at c0mpiled-15! A TypeScript agent on a Mac mini sends and receives the iMessages, and MongoDB holds the records behind the replies and the dashboard (which I designed in Figma first). Coordinators already text their volunteers, so I wanted Tari to live in that same thread.',
-        'Tari won 1st place in the Solo Hackers track, sponsored by Penn State MICS (Multicultural Innovators in Computer Science), and 3rd in the Bloomerang track, where their team gave positive feedback. Since then I\u2019ve started a waitlist, shared it on Reddit and have been getting feedback from nonprofit workers. Stay tuned!'
+        'Volunteer coordinators keep whole nonprofit programs running out of spreadsheets, sign-up forms, calendars and a lot of texts. When tracking hours, birthdays and paperwork slips, volunteers are no longer engaged.',
+        'So I built Tari, an AI teammate you just text like a coworker, right in iMessage. Send \u201cSteve covered Saturday, 3 hours\u201d and his record updates. It fills out forms over text, puts birthdays and events on your Google Calendar, and has a dashboard showing hours, retention and who could use a check-in.',
+        'I built it solo in 8 hours at c0mpiled-15! For this, I had a TypeScript agent on a Mac mini send and receive the iMessages, and MongoDB holds the records behind the replies and the dashboard (which I designed in Figma first). Coordinators already text their volunteers, so I wanted Tari to live in that same thread.',
+        'Tari won 1st place in the Solo Hackers track, sponsored by Penn State MICS (Multicultural Innovators in Computer Science), and 3rd in the Bloomerang track!',
+        'Check out the demo video I created here!'
+      ]
+    },
+    {
+      slug: 'thesis', name: 'AI as a Teaching Partner', tile: 'thesis', icon: 'thesis',
+      meta: ['nov 2025 \u2014 present', 'honors thesis'],
+      blurb: 'My honors thesis: a multi-agent AI system that helps teachers design science lessons where students do real science, not just absorb facts.',
+      short: 'Multi-agent AI for science lesson design.',
+      tags: ['Python', 'AWS', 'LLM agents'],
+      body: [
+        'AI in education usually means one of two things: tutors that teach students directly, or tools that save teachers time. My honors thesis sits in between. I\u2019m asking whether AI can help teachers design better science lessons, not just faster ones.',
+        'My earlier evaluation found that single LLMs write molecular biology lessons that are accurate but leave students passive, with little real-world context, little room to investigate and few chances to test ideas. So I\u2019m building a multi-agent system where each agent targets one of those gaps (critiquing the plan, simulating a student, grounding it in real science), the way expert teachers critique and refine their own lessons.',
+        'I compare it against single-model baselines across five protein-biology topics from PDB-101, scoring each plan on a scientific-practice rubric and gathering teacher feedback through questionnaires. Every agent exchange is logged, so teachers can see why a lesson changed, not just the final result.',
+        'It\u2019s built in Python on AWS, and I\u2019m advised by Dr. Rebecca Passonneau. Still in progress, stay tuned!'
       ]
     },
     {

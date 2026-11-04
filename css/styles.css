@@ -543,7 +543,14 @@ body.nav-away .nav-toggle .chevron { transform: rotate(90deg); }
   border-radius: 14px;
 }
 .detail__screens { display: none; }
-.detail__tags { margin-top: 2px; }
+/* Links and tags on one row, wrapping onto two when the column is narrow. */
+.detail__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin-top: 2px;
+}
 
 /* Skills — Figma's Chip: not interactive, so no hover. */
 .chips__label { margin: 0 0 14px; }
@@ -1086,7 +1093,9 @@ body.phone-away .phone-tab {
   /* Detail: a normal scrolling page; the demo screens sit in the column. */
   .page--detail { display: block; height: auto; }
   .page--detail .prose { display: block; }
-  .page--detail .prose > * + * { margin-top: 14px; }
+  /* :not() outranks the desktop `.prose > p { margin: 0 }`, which otherwise
+     wins and runs the paragraphs together. */
+  .page--detail .prose > :not(:first-child) { margin-top: 14px; }
   .detail__image { width: 100%; max-height: none; }
   .detail__screens {
     display: grid;
