@@ -54,7 +54,7 @@ the rest are fixed.
 load-bearing in every headline).
 
 **Ambient background.** Behind the mint, three faint blooms (tile-b, tile-a and
-peach, at 20–38% and fading to nothing) drift and turn slowly on a 60s
+at 22% and 12%, and peach at just 8%, all fading to nothing) drift and turn slowly on a 60s
 alternating cycle. It is one fixed, oversized `body::before` moved by transform
 only, so it never repaints content, and its darkest point is barely off mint,
 so text contrast is unchanged. Still under `prefers-reduced-motion`.
