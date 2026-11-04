@@ -128,7 +128,8 @@ row.
 
 **Skills** open the experience list — its own page was thin (12
 chips, most already project tags), and recruiters read experience and skills
-together. They render as Figma's Chip: 16px, 9 × 18 padding, tile-b at 45% with
+together. Three groups, in this order: llms & apis, languages, frameworks &
+tools. They render as Figma's Chip: 16px, 9 × 18 padding, tile-b at 45% with
 a sage hairline; labels, not controls — no hover. The nav drops to five items.
 
 **Experience** is one list, work then leadership, each group's label on its
