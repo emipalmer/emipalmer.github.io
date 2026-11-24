@@ -153,11 +153,13 @@ const CONTENT = {
     {
       slug: 'this-site', name: 'This site', tile: 'this site', icon: 'site',
       meta: ['2026', 'design & build'],
-      blurb: 'Designed in Figma and built from scratch — the phone is the navigation.',
+      blurb: 'Designed in Figma. Built using HTML, CSS, and JavaScript with Claude Code',
       short: 'Built from scratch; the phone is the nav.',
       tags: ['HTML/CSS', 'JavaScript', 'Figma'],
-      body: ['Designed in Figma!']
-    },
+      body: ['My portfolio website! I wanted to create something that reflected my style while still being intuitive and engaging. Designed in Figma!',
+        'I originally started out with sketching out my concept using Canva, before building it in Figma and then coding it with HTML, CSS, and JavaScript.'
+      ]
+          },
     {
       slug: 'revibe', name: 'ReVibe', tile: 'revibe', icon: 'revibe',
       meta: ['feb 2025', 'ui/ux design'],
@@ -246,10 +248,10 @@ const CONTENT = {
       { src: 'assets/photos/event.jpg',             x: 705, y: 370, w: 283, h: 212, step: 1, tilt: -3.1,  alt: 'Emilia and three friends wearing name tags in a grand arched hall' },
       { src: 'assets/photos/lisboa.jpg',            x: 128, y: 445, w: 225, h: 169, step: 1, tilt: -6.1,  alt: 'Emilia with three friends, one in an I love Lisboa shirt' },
       { src: 'assets/photos/travel-study.jpg',      x: 383, y: 187, w: 219, h: 292, step: 2, tilt: -4.1, alt: 'A travel-study group gathered in a caf\u00e9 under a hanging plant' },
+      { src: 'assets/photos/venerable.jpg',         x: 592, y: 213, w: 199, h: 265, step: 2, tilt: 5.1,  alt: 'Emilia and three friends sitting in front of a tall window' },
       { src: 'assets/photos/blazers.jpg',           x: 82,  y: 222, w: 318, h: 238, step: 2, tilt: 3.1, alt: 'Emilia with two friends in dark blazers' },
       { src: 'assets/photos/venerable-meeting.jpg', x: 285, y: 494, w: 371, h: 209, step: 1, tilt: 6.1, alt: 'A full meeting room at Venerable\u2019s West Chester office' },
       { src: 'assets/photos/venerable-team.jpg',    x: 656, y: 200, w: 338, h: 177, step: 2, tilt: -2,  alt: 'Interns in front of the Venerable West Chester office sign' },
-      { src: 'assets/photos/venerable.jpg',         x: 592, y: 213, w: 199, h: 265, step: 2, tilt: 5.1,  alt: 'Emilia and three friends sitting in front of a tall window' },
       { src: 'assets/photos/dressed-up.jpg',        x: 484, y: 456, w: 200, h: 267, step: 2, tilt: -3, alt: 'Emilia and a friend dressed up for an event' }
     ]
   },
