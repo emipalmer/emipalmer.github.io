@@ -33,7 +33,7 @@ const CONTENT = {
       title: { lead: 'Hi, I’m ', em: 'Emilia', tail: '.' },
       docTitle: 'Emilia Palmer — Software Engineer',
       body: [
-        { type: 'list', items: ['Computer Science @ Penn State', 'Software Development, AI & Full-Stack'] },
+        { type: 'list', items: ['Computer Science @ Penn State', 'Software Development, AI/ML & Full-Stack'] },
         { type: 'actions', items: [LINKS.resume, LINKS.github] }
       ]
     },
