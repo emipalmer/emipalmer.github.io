@@ -162,12 +162,12 @@ const CONTENT = {
     {
       slug: 'star', name: 'Star', tile: 'star', icon: 'star',
       meta: ['2026', 'design & build', 'personal project'],
-      blurb: 'My personal iMessage agent, built off Tari and running on the same Mac mini. It manages my Google Calendar and sends me capybara pictures.',
+      blurb: 'My personal iMessage agent, built off Tari and running on the same Mac mini. It manages my Google Calendar.',
       short: 'My own AI assistant, in iMessage.',
       tags: ['TypeScript', 'Google Calendar', 'iMessage'],
       shots: [
         { src: 'assets/projects/star-capybara.jpg', alt: 'iMessage thread with Star: asked for a capybara, it sends two capybara photos with captions like “certified midnight snack energy”' },
-        { src: 'assets/projects/star-week.jpg', alt: 'iMessage thread with Star: asked what is coming up this week, it starts a day-by-day list from Google Calendar' }
+        { src: 'assets/projects/star-week.jpg', alt: 'iMessage thread with Star: asked what is coming up this week, it replies with a day-by-day list from Google Calendar' }
       ],
       body: [
         'After building Tari, I wanted one for myself. Star is my personal agent that lives in iMessage, so I text it the way I’d text a friend.',
@@ -263,7 +263,7 @@ const CONTENT = {
       group: 'work',
       roles: [
         {
-          title: 'Labs Intern', org: 'Bloomerang', dates: 'incoming',
+          title: 'Intern', org: 'Bloomerang', dates: 'incoming',
           line: 'Joining Bloomerang’s Labs team to work on models and harnesses.',
           short: 'Labs team: models and harnesses.'
         },

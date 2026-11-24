@@ -146,8 +146,6 @@ until the window has room. Below 900px the page scrolls, the image runs full
 width, and ESDRS and ReVibe's phone screens sit in the column as a strip.
 **Star's screenshots sit in the page, not the phone** (`shots`): real iMessage
 threads under the write-up, sharing the height that is left, side by side.
-The calendar one is cropped after Wednesday's first line, so no names, venues
-or weekend plans go public.
 The whole project card links to its detail page; "read more →" shares the tag
 row.
 
@@ -410,7 +408,7 @@ interviewer assuming otherwise and finding out. Its tags are UI/UX and Figma onl
 a framework tag would imply it was built.
 
 Experience holds six roles in two groups, work then leadership. The incoming
-Bloomerang Labs internship leads work; its dates read `incoming` until they are set. Numbers matter —
+Bloomerang internship (Labs team) leads work; its dates read `incoming` until they are set. Numbers matter —
 80% policy review reduction, 500+ students, 6+ city groups.
 
 Contact: `mia.annp@gmail.com`, `github.com/emipalmer`,
