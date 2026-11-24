@@ -268,25 +268,31 @@
     els.page.classList.add('is-entering');
   }
 
-  /** A project's own page: back link, title, meta, image, write-up, tags. */
+  /**
+   * A project's own page: back link, title, then the write-up (meta, image,
+   * paragraphs, tags). Design considerations and what's next, when a project
+   * has them, are a second step: on desktop the dots swap it in, below the
+   * breakpoint it follows the write-up.
+   */
   function renderDetail(project) {
     els.page.append(el('a', { className: 'detail__back', text: '\u2190 projects', attrs: { href: '#/projects' } }));
     els.page.append(el('h1', { className: 'headline', text: project.name }));
 
     const prose = el('div', { className: 'prose' });
-    prose.append(el('p', { className: 'detail__meta', text: [...project.meta, project.award].filter(Boolean).join('  \u00b7  ') }));
+    const writeup = el('section', { className: 'detail__step' });
+    writeup.append(el('p', { className: 'detail__meta', text: [...project.meta, project.award].filter(Boolean).join('  \u00b7  ') }));
     if (project.image) {
       const img = el('img', { className: 'detail__image', attrs: { src: project.image.src, alt: project.image.alt } });
-      prose.append(img);
+      writeup.append(img);
       fitDetailImage(img);
     }
     // With no phone below the breakpoint, the demo screens sit in the column.
     if (project.screens) {
       const strip = el('div', { className: 'detail__screens' });
       project.screens.forEach(shot => strip.append(el('img', { attrs: { src: shot.src, alt: shot.alt, loading: 'lazy' } })));
-      prose.append(strip);
+      writeup.append(strip);
     }
-    project.body.forEach(text => prose.append(el('p', { text })));
+    project.body.forEach(text => writeup.append(el('p', { text })));
     // Outside links (a demo video, a repo) share one row with the tags, so
     // a project with links needs no extra height on a desktop that never scrolls.
     const foot = el('div', { className: 'detail__foot' });
@@ -294,7 +300,23 @@
     const tags = el('ul', { className: 'card__tech detail__tags' });
     project.tags.forEach(t => tags.append(el('li', { text: t })));
     foot.append(tags);
-    prose.append(foot);
+    writeup.append(foot);
+    prose.append(writeup);
+
+    if (project.considered || project.next) {
+      const notes = el('section', { className: 'detail__step detail__notes' });
+      if (project.considered) {
+        notes.append(el('h2', { className: 'detail__label', text: CONTENT.detail.considered }));
+        project.considered.forEach(text => notes.append(el('p', { text })));
+      }
+      if (project.next) {
+        notes.append(el('h2', { className: 'detail__label', text: CONTENT.detail.next }));
+        const ul = el('ul', { className: 'detail__next' });
+        project.next.forEach(text => ul.append(el('li', { text })));
+        notes.append(ul);
+      }
+      prose.append(notes, stepDots(`${project.name} sections`));
+    }
     els.page.append(prose);
   }
 
@@ -303,6 +325,7 @@
    * would be a sliver, so it steps aside until the window has room again.
    */
   let unfitImage = null;
+  let refitImage = null;
   function fitDetailImage(img) {
     const fit = () => {
       img.hidden = false;
@@ -311,24 +334,31 @@
     const resize = new ResizeObserver(fit);
     resize.observe(els.page);
     img.addEventListener('load', fit);
-    unfitImage = () => resize.disconnect();
+    refitImage = fit;  // the write-up step measures again when it comes back
+    unfitImage = () => { resize.disconnect(); refitImage = null; };
   }
 
   /* --- Stepped views -----------------------------------------------------
      The desktop page never scrolls. Content longer than the frame moves in
      steps instead: dots in the left margin, one wheel or trackpad gesture per
-     step, arrow and page keys, or a swipe. Two views use it — the projects
-     list pages through its cards, and about builds its collage.
+     step, arrow and page keys, or a swipe. Three views use it — the projects
+     list pages through its cards, about builds its collage, and a project's
+     detail steps from its write-up to its design notes.
   ------------------------------------------------------------------------ */
 
-  /** Route wheel, key and swipe input on the page to step changes. */
-  function bindStepInput(step, jump, count) {
+  /**
+   * Route wheel, key and swipe input on the page to step changes. `scrolls`,
+   * if given, says whether the view can still scroll that way itself; wheel
+   * and swipe then scroll it natively and only step once it is at the end.
+   */
+  function bindStepInput(step, jump, count, scrolls = () => false) {
     // One step per gesture: trackpads keep firing wheel events after a flick,
     // so a gesture only counts again once the wheel has been quiet a moment.
     let spent = false;
     let quiet = null;
     function onWheel(e) {
       if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      if (scrolls(Math.sign(e.deltaY))) return;
       e.preventDefault();
       clearTimeout(quiet);
       quiet = setTimeout(() => { spent = false; }, 220);
@@ -351,7 +381,7 @@
     const onTouchEnd = e => {
       if (touchY === null) return;
       const dy = touchY - e.changedTouches[0].clientY;
-      if (Math.abs(dy) > 40) step(Math.sign(dy));
+      if (Math.abs(dy) > 40 && !scrolls(Math.sign(dy))) step(Math.sign(dy));
       touchY = null;
     };
 
@@ -392,17 +422,65 @@
   function setupSteps() {
     const pager = els.page.querySelector('.pager');
     const collage = els.page.querySelector('.collage');
-    if (!pager && !collage) return;
+    const detail = els.page.querySelector('.detail__notes');
+    if (!pager && !collage && !detail) return;
     const animate = hasMotion && !reducedMotion.matches;
     steps = { cleanups: [] };
     if (pager) setupPager(pager, animate, steps.cleanups);
     if (collage) setupCollage(collage, animate, steps.cleanups);
+    if (detail) setupDetailSteps(detail.parentElement, animate, steps.cleanups);
   }
 
   function teardownSteps() {
     if (!steps) return;
     steps.cleanups.forEach(fn => fn());
     steps = null;
+  }
+
+  /* Project detail: the write-up, then design considerations and what's next. */
+
+  function setupDetailSteps(prose, animate, cleanups) {
+    // Below the breakpoint the document scrolls and both sections show.
+    if (!desktop.matches) return;
+    const sections = Array.from(prose.querySelectorAll(':scope > .detail__step'));
+    const rail = prose.querySelector(':scope > .step-dots');
+    let current = 0;
+    let busy = false;
+
+    function show(i) {
+      sections.forEach((section, k) => { section.hidden = k !== i; });
+      if (i === 0 && refitImage) refitImage();
+      markDot(rail, i);
+    }
+
+    function go(to) {
+      if (busy || to < 0 || to >= sections.length || to === current) return;
+      const dir = to > current ? 1 : -1;
+      const leaving = sections[current];
+      current = to;
+      if (!animate) { show(current); return; }
+      busy = true;
+      gsap.timeline({ onComplete: () => { busy = false; } })
+        .to(leaving, { y: -28 * dir, opacity: 0, duration: 0.28, ease: 'power2.in' })
+        .add(() => show(current))
+        .fromTo(sections[current], { y: 28 * dir, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' });
+    }
+
+    // A write-up taller than a short window scrolls inside its step first.
+    function scrolls(dir) {
+      const s = sections[current];
+      return dir > 0 ? s.scrollTop + s.clientHeight < s.scrollHeight - 1 : s.scrollTop > 0;
+    }
+
+    els.page.classList.add('page--stepped');
+    renderDots(rail, CONTENT.detail.steps, go);
+    show(0);
+    cleanups.push(bindStepInput(d => go(current + d), go, () => sections.length, scrolls));
+    cleanups.push(() => {
+      els.page.classList.remove('page--stepped');
+      sections.forEach(section => { section.hidden = false; });
+      if (hasMotion) { gsap.killTweensOf(sections); gsap.set(sections, { clearProps: 'opacity,transform' }); }
+    });
   }
 
   /* Projects: a page of cards at a time. */

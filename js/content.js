@@ -95,13 +95,21 @@ const CONTENT = {
        image  : shown on the detail page     screens: shown in the phone on
                                                       the detail page (1:1)
        links  : buttons under the write-up (a demo, a repo); open in a new tab
+       considered: design decisions, each a paragraph   } a second step of
+       next      : what I want to add, each a bullet    } the detail page
   ----------------------------------------------------------------------- */
+  detail: {
+    considered: 'design considerations',
+    next: 'what’s next',
+    steps: ['Show the write-up', 'Show design considerations and what’s next']
+  },
+
   projects: [
     {
       slug: 'tari', name: 'Tari', tile: 'tari', icon: 'tari',
       meta: ['oct 2026', 'design & build', 'c0mpiled-15 hackathon'],
       award: '1st place Solo Hackers  \u00b7  3rd place Bloomerang',
-      blurb: 'An AI teammate for volunteer coordinators that lives in iMessage. I built it solo in 8 hours, and it placed twice at c0mpiled-15!',
+      blurb: 'An AI teammate for volunteer coordinators that lives in iMessage. I built it solo in 8 hours and won 1st place in Solo Hackers and 3rd in the Bloomerang track at c0mpiled-15!',
       short: 'An AI teammate for nonprofits, in iMessage.',
       tags: ['TypeScript', 'MongoDB', 'AWS', 'Google Calendar'],
       links: [{ label: 'watch the demo', href: 'https://youtu.be/BR4wUO52DOo' }],
@@ -127,6 +135,49 @@ const CONTENT = {
       ]
     },
     {
+      slug: 'esdrs', name: 'esdrs', tile: 'esdrs', icon: 'esdrs',
+      meta: ['2026 — present', 'design & product lead'],
+      award: 'Dave Hall Award, Bardusch Family IdeaMakers Challenge',
+      blurb: 'An invite-only app for borrowing clothes from friends. I designed 57 screens in Figma, I’m building it natively in SwiftUI, and 100+ people are on the waitlist.',
+      short: 'Social app for sustainable fashion.',
+      tags: ['SwiftUI', 'Figma', 'UI/UX', 'Mobile'],
+      image: { src: 'assets/projects/esdrs.jpg', alt: 'Emilia and two teammates in dark blazers' },
+      screens: [
+        { src: 'assets/projects/esdrs-screen-a.png', alt: 'esdrs profile: your closet of pieces to lend, with borrow counts' },
+        { src: 'assets/projects/esdrs-screen-b.png', alt: 'esdrs event board for Penn State vs. Ohio State, showing what people are wearing' },
+        { src: 'assets/projects/esdrs-screen-c.png', alt: 'esdrs browse: search closets, filter by occasion, pieces from friends\u2019 closets' }
+      ],
+      body: [
+        'More than two in five college students buy clothes for an event they’ll wear once. The workaround — texting friends to ask what they own — is a free-for-all where nobody knows what anyone has.',
+        'esdrs is an invite-only app for borrowing clothes from people you already know. Access runs through the social graph rather than a public marketplace, so browsing extends to friends-of-friends, and joining a sorority or club unlocks those closets past the normal limit. To keep it fair, you post before you borrow: one piece unlocks browsing, three unlock borrowing.',
+        'I designed 57 screens and the system behind them: the full borrow lifecycle from request through handoff, return and overdue, including the messy parts like declines, cancellations and asking for more time; communities built as an audience and a calendar rather than a shared closet; event boards where people coordinate what they’re wearing; and a privacy model where borrow history stays private but you can choose to post yourself in a piece.',
+        'Now I’m turning the designs into a native iOS app in SwiftUI, built with Claude in Xcode. The whole borrow flow works end to end, from the feed to a request, a chat with a live request card, pickup, return and overdue. I set up a shared type scale and component library so the app stays consistent with Figma, and planned a Supabase backend where the borrowing rules are enforced server-side.',
+        'I also built a waitlist of 100+ people. Next up is testing the prototype with Penn State students, stay tuned!'
+      ],
+      next: [
+        'Letting people “try on” pieces from other people’s closets with AI, as a potential premium feature and something fun to experiment with building.'
+      ]
+    },
+    {
+      slug: 'star', name: 'Star', tile: 'star', icon: 'star',
+      meta: ['2026', 'design & build', 'personal project'],
+      blurb: 'My personal iMessage agent, built off Tari and running on the same Mac mini. It manages my Google Calendar and sends me capybara pictures.',
+      short: 'My own AI assistant, in iMessage.',
+      tags: ['TypeScript', 'Google Calendar', 'iMessage'],
+      body: [
+        'After building Tari, I wanted one for myself. Star is my personal agent that lives in iMessage, so I text it the way I’d text a friend.',
+        'It runs on the same infrastructure as Tari: a TypeScript agent on my Mac mini that sends and receives the iMessages. I gave Star more capabilities, starting with my schedule. It manages my Google Calendar, so I can add, move and check events over text.',
+        'And as a fun touch, it sends me capybara pictures through capy.lol, and its contact photo is a Smiski!'
+      ],
+      considered: [
+        'I considered giving Star access to Claude Code, so I could edit this portfolio and my other repos straight from iMessage. I decided against it: the convenience of just opening iMessage doesn’t outweigh the security measures Claude’s app already has, and the app can already code from my phone.'
+      ],
+      next: [
+        'Tune its responses to suit my communication style more.',
+        'Have it search the web for news.'
+      ]
+    },
+    {
       slug: 'worklog', name: 'WorkLog', tile: 'worklog', icon: 'worklog',
       meta: ['2026', 'design & build', 'personal project'],
       blurb: 'Log what you did each day; it turns those notes into resume bullets, STAR stories and a skills list when you need them.',
@@ -136,26 +187,6 @@ const CONTENT = {
       body: [
         'You do good work and then can’t remember any of it. At review time, or when updating a resume, you are reconstructing months from memory and the specifics of your impact are gone.',
         'WorkLog is a daily log that pays off later. You write a line or two about what you did, and it turns those entries into resume bullets, STAR stories or a skills list. The resume editor sits beside a live preview, so a bullet goes from log to document without retyping.'
-      ]
-    },
-    {
-      slug: 'esdrs', name: 'esdrs', tile: 'esdrs', icon: 'esdrs',
-      meta: ['2026 — present', 'design & product lead'],
-      award: 'Dave Hall Award, Bardusch Family IdeaMakers Challenge',
-      blurb: 'A social mobile app promoting sustainability within fashion.',
-      short: 'Social app for sustainable fashion.',
-      tags: ['UI/UX', 'Mobile', 'Figma'],
-      image: { src: 'assets/projects/esdrs.jpg', alt: 'Emilia and two teammates in dark blazers' },
-      screens: [
-        { src: 'assets/projects/esdrs-screen-a.png', alt: 'esdrs profile: your closet of pieces to lend, with borrow counts' },
-        { src: 'assets/projects/esdrs-screen-b.png', alt: 'esdrs event board for Penn State vs. Ohio State, showing what people are wearing' },
-        { src: 'assets/projects/esdrs-screen-c.png', alt: 'esdrs browse: search closets, filter by occasion, pieces from friends\u2019 closets' }
-      ],
-      body: [
-        'More than two in five college students buy clothes for an event they’ll wear once. The workaround — texting friends to ask what they own — is a free-for-all where nobody knows what anyone has.',
-        'esdrs is an invite-only app for borrowing clothes from people you already know. Access runs through the social graph rather than a public marketplace, so browsing extends to friends-of-friends, and joining a sorority or club unlocks those closets past the normal limit.',
-        'My work so far is 57 screens and the system behind them: the full borrow lifecycle from request through handoff, return and overdue; communities built as an audience and a calendar rather than a shared closet; event boards where people coordinate what they’re wearing; and a privacy model where borrow history stays private but you can choose to post yourself in a piece.',
-        'I’m currently working on developing the app, stay tuned for updates!'
       ]
     },
     {
@@ -216,7 +247,7 @@ const CONTENT = {
   skills: [
     { label: 'llms & apis', items: ['AWS Bedrock', 'Strands Agents', 'LLM APIs (Mistral, Claude)', 'Prompt Engineering', 'LLM Classification & Structured Extraction', 'LLM Cost Analysis'] },
     { label: 'languages', items: ['Python', 'TypeScript', 'JavaScript', 'Java', 'C', 'Swift', 'SQL', 'HTML/CSS'] },
-    { label: 'frameworks & tools', items: ['AWS', 'Streamlit', 'React', 'MongoDB', 'Docker', 'Git', 'Unity', 'Photon Fusion', 'Linux', 'Figma'] }
+    { label: 'frameworks & tools', items: ['AWS', 'Streamlit', 'React', 'MongoDB', 'Docker', 'Git', 'SwiftUI', 'Unity', 'Photon Fusion', 'Linux', 'Figma'] }
   ],
 
   /* --- Experience --------------------------------------------------------
@@ -226,6 +257,11 @@ const CONTENT = {
     {
       group: 'work',
       roles: [
+        {
+          title: 'Labs Intern', org: 'Bloomerang', dates: 'incoming',
+          line: 'Joining Bloomerang’s Labs team to work on models and harnesses.',
+          short: 'Labs team: models and harnesses.'
+        },
         {
           title: 'AI Engineer Intern', org: 'Venerable', team: 'VenAI team', dates: 'may – aug 2026',
           line: 'Built Python automation on AWS Bedrock for investment, finance and compliance teams, including a compliance merge pipeline that cut policy review time by 80%.',

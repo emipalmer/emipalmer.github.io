@@ -107,7 +107,8 @@ on top of it.
 Skills was folded into experience; `#/skills` redirects there so old links
 keep working.
 
-Slugs: `esdrs`, `dementia-mr`, `revibe`, `gemini-add-on`, `worklog`, `this-site`.
+Slugs: `tari`, `thesis`, `esdrs`, `star`, `worklog`, `dementia-mr`, `gemini-add-on`,
+`this-site`, `revibe`.
 
 Detail **replaces** the list rather than expanding in place. Expanding pushed the
 last project below the fold on a page that does not scroll, and each project gets
@@ -119,7 +120,7 @@ not a working prototype. While they are showing, the chevrons page through the
 project's images instead of the home screens, and the home indicator bar at the
 bottom (redrawn on top of the image) returns the phone to its home screens. The
 page column stays on the detail either way; `← projects` is the page's exit. The
-other four detail pages leave the phone alone.
+other detail pages leave the phone alone.
 
 An unknown hash gets a 404 page (`Hmm, nothing here.` plus two ways back), not a
 silent fallback to home. A silent fallback reads as the link being broken.
@@ -131,6 +132,16 @@ until the window has room. Below 900px the page scrolls, the image runs full
 width, and ESDRS and ReVibe's phone screens sit in the column as a strip.
 The whole project card links to its detail page; "read more →" shares the tag
 row.
+
+**Design considerations and what's next** (`considered`, `next` in
+`content.js`) are a second step of the detail page, not more text under the
+write-up: the write-up already fills the column, and the page never scrolls.
+On desktop, dots in the left margin step between the two, with the same wheel,
+key and swipe input as the projects list. A write-up too tall for a short
+window scrolls inside its step first, and the wheel only steps once it reaches
+the end. Below 900px both follow the write-up, one after the other. Projects
+with neither have one step and no dots. Considerations are paragraphs (a
+decision and its reason); what's next is a bulleted list.
 
 **Skills** open the experience list — its own page was thin (12
 chips, most already project tags), and recruiters read experience and skills
@@ -353,13 +364,16 @@ Tab titles read "Emilia Palmer — Software Engineer" on home and
 Open Graph tags point at it by absolute URL, so update them if the domain
 changes. The favicon is a phone app tile with an italic e.
 
-Eight projects: Tari, AI as a Teaching Partner (honors thesis), esdrs, Dementia
+Nine projects: Tari, AI as a Teaching Partner (honors thesis), esdrs, Star, Dementia
 Care MR Simulation, ReVibe, Gemini AI Document Add-On, WorkLog, This site. **esdrs is always lowercase** in copy. Roles are
 fixed: esdrs is "design & product lead", Dementia Care MR is "software developer".
 
-**Order: tari, thesis, worklog, esdrs, dementia mr, gemini add-on, this site,
-revibe** — featured projects first, design-only last. Tari leads: newest, and it
-placed twice at c0mpiled-15 (1st Solo Hackers, 3rd Bloomerang).
+**Order: tari, thesis, esdrs, star, worklog, dementia mr, gemini add-on, this
+site, revibe** — featured projects first, design-only last. Tari leads: newest,
+and it won 1st place in Solo Hackers and 3rd in the Bloomerang track at
+c0mpiled-15. WorkLog is kept off the first page of cards; esdrs (now built in
+SwiftUI, 100+ on the waitlist) takes its place. Star, Mia's personal iMessage
+agent built on Tari's setup, follows it.
 
 **The thesis claims only what it measures**: lesson-plan quality and teachers'
 perceptions of the plans. There is no classroom deployment, so its copy never
@@ -377,7 +391,8 @@ body is intentionally just "Designed in Figma!".
 interviewer assuming otherwise and finding out. Its tags are UI/UX and Figma only —
 a framework tag would imply it was built.
 
-Experience holds five roles in two groups, work then leadership. Numbers matter —
+Experience holds six roles in two groups, work then leadership. The incoming
+Bloomerang Labs internship leads work; its dates read `incoming` until they are set. Numbers matter —
 80% policy review reduction, 500+ students, 6+ city groups.
 
 Contact: `mia.annp@gmail.com`, `github.com/emipalmer`,

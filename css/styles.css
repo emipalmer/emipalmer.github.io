@@ -531,15 +531,32 @@ body.nav-away .nav-toggle .chevron { transform: rotate(90deg); }
 }
 .page--detail .headline { margin-bottom: 12px; }
 .page--detail .prose {
+  position: relative;  /* anchors the step dots */
   flex: 1;
   min-height: 0;
   max-width: 720px;
   display: flex;
   flex-direction: column;
+}
+/* One step: the write-up, or design considerations and what's next. */
+.detail__step {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
   gap: 14px;
 }
-.page--detail .prose > p { margin: 0; font-size: 1rem; line-height: 1.55; }
+.detail__step > p { margin: 0; font-size: 1rem; line-height: 1.55; }
+/* The dots sit in the left margin, outside the column's clip, so a stepped
+   page clips (and, in a short window, scrolls) each step instead. */
+.page--stepped { overflow: visible; }
+.page--stepped .detail__step {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 6px 14px 6px 6px;  /* room for focus rings inside the clip */
+  margin: -6px;
+}
 .detail__back {
   align-self: flex-start;
   margin-bottom: 10px;
@@ -549,7 +566,7 @@ body.nav-away .nav-toggle .chevron { transform: rotate(90deg); }
   text-decoration: none;
 }
 .detail__back:hover { text-decoration: underline; }
-.page--detail .prose > .detail__meta {
+.detail__step > .detail__meta {
   font-size: .875rem;
   font-style: italic;
   color: color-mix(in srgb, var(--forest-soft) 85%, transparent);
@@ -564,6 +581,16 @@ body.nav-away .nav-toggle .chevron { transform: rotate(90deg); }
   border-radius: 14px;
 }
 .detail__screens { display: none; }
+.detail__label {
+  margin: 10px 0 -4px;
+  font-size: .875rem;
+  font-weight: 400;
+  font-style: italic;
+  color: color-mix(in srgb, var(--forest-soft) 85%, transparent);
+}
+.detail__label:first-child { margin-top: 0; }
+.detail__next { margin: 0; padding-left: 1.2em; font-size: 1rem; line-height: 1.55; }
+.detail__next li + li { margin-top: 6px; }
 /* Links and tags on one row, wrapping onto two when the column is narrow. */
 .detail__foot {
   display: flex;
@@ -1113,10 +1140,12 @@ body.phone-away .phone-tab {
 
   /* Detail: a normal scrolling page; the demo screens sit in the column. */
   .page--detail { display: block; height: auto; }
-  .page--detail .prose { display: block; }
-  /* :not() outranks the desktop `.prose > p { margin: 0 }`, which otherwise
-     wins and runs the paragraphs together. */
-  .page--detail .prose > :not(:first-child) { margin-top: 14px; }
+  .page--detail .prose,
+  .detail__step { display: block; }
+  /* :not() outranks the desktop `.detail__step > p { margin: 0 }`, which
+     otherwise wins and runs the paragraphs together. */
+  .detail__step > :not(:first-child) { margin-top: 14px; }
+  .detail__notes { margin-top: 36px; }
   .detail__image { width: 100%; max-height: none; }
   .detail__screens {
     display: grid;
