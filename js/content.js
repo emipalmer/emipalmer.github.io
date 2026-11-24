@@ -95,6 +95,7 @@ const CONTENT = {
        image  : shown on the detail page     screens: shown in the phone on
                                                       the detail page (1:1)
        links  : buttons under the write-up (a demo, a repo); open in a new tab
+       shots  : screenshots in the page, under the write-up (not on the phone)
        considered: design decisions, each a paragraph   } a second step of
        next      : what I want to add, each a bullet    } the detail page
   ----------------------------------------------------------------------- */
@@ -164,6 +165,10 @@ const CONTENT = {
       blurb: 'My personal iMessage agent, built off Tari and running on the same Mac mini. It manages my Google Calendar and sends me capybara pictures.',
       short: 'My own AI assistant, in iMessage.',
       tags: ['TypeScript', 'Google Calendar', 'iMessage'],
+      shots: [
+        { src: 'assets/projects/star-capybara.jpg', alt: 'iMessage thread with Star: asked for a capybara, it sends two capybara photos with captions like “certified midnight snack energy”' },
+        { src: 'assets/projects/star-week.jpg', alt: 'iMessage thread with Star: asked what is coming up this week, it starts a day-by-day list from Google Calendar' }
+      ],
       body: [
         'After building Tari, I wanted one for myself. Star is my personal agent that lives in iMessage, so I text it the way I’d text a friend.',
         'It runs on the same infrastructure as Tari: a TypeScript agent on my Mac mini that sends and receives the iMessages. I gave Star more capabilities, starting with my schedule. It manages my Google Calendar, so I can add, move and check events over text.',
@@ -326,9 +331,21 @@ const CONTENT = {
 
   /* --- Phone screens -----------------------------------------------------
      Home screens paged by the chevrons: navigation, projects, links.
-     A tile with `route` moves around the site; one with `href` opens a link.
+     A tile with `route` moves around the site; one with `href` opens a link;
+     one with `app` opens that app on the phone itself (only notes, for now).
      `icon` is a key from js/icons.js.
   ----------------------------------------------------------------------- */
+  /* --- Notes app -------------------------------------------------------
+     Opens on the phone from the notes tile. Visitors can type over all of
+     it; their edits stay on their screen until the page reloads.
+  ----------------------------------------------------------------------- */
+  notes: {
+    label: 'Notes. Click anywhere to type, or delete anything.',
+    title: 'to dos + notes',
+    lines: ['- make a game for this phone', '- make a koi pond visual', '- study for finals', '- get a coffee'],
+    prompt: 'add more notes here:'
+  },
+
   screens: [
     {
       name: 'navigation',
@@ -337,7 +354,8 @@ const CONTENT = {
         { label: 'about',      icon: 'about',      route: '#/about' },
         { label: 'projects',   icon: 'projects',   route: '#/projects' },
         { label: 'experience', icon: 'experience', route: '#/experience' },
-        { label: 'contact',    icon: 'contact',    route: '#/contact' }
+        { label: 'contact',    icon: 'contact',    route: '#/contact' },
+        { label: 'notes',      icon: 'notes',      app: 'notes' }
       ]
     },
     {

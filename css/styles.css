@@ -20,6 +20,8 @@
   --bezel:       #5A5675;
   --pink:        #CF8D87;   /* links-screen banner only   */
   --peach:       #FECFBD;
+  --note:        #FDF7E2;   /* notes app paper            */
+  --note-ink:    #736E37;   /* notes app text, 4.9:1      */
   --error:       #A14A44;   /* form errors                */
 
   /* Device chrome — drawn once in the Figma iPhone component, not variables */
@@ -104,7 +106,7 @@ button {
 }
 
 /* One consistent, high-contrast focus ring everywhere. */
-:where(a, button, [tabindex]):focus-visible {
+:where(a, button, [tabindex], [contenteditable]):focus-visible {
   outline: 2px solid var(--forest);
   outline-offset: 3px;
   border-radius: 6px;
@@ -581,6 +583,19 @@ body.nav-away .nav-toggle .chevron { transform: rotate(90deg); }
   border-radius: 14px;
 }
 .detail__screens { display: none; }
+/* Screenshots under the write-up (Star): they take the height that's left. */
+.detail__shots {
+  flex: 1 1 0;
+  min-height: 180px;
+  max-height: 380px;
+  display: flex;
+  gap: 12px;
+}
+.detail__shots img {
+  height: 100%;
+  width: auto;
+  border-radius: 14px;
+}
 .detail__label {
   margin: 10px 0 -4px;
   font-size: .875rem;
@@ -988,6 +1003,40 @@ body.phone-away .phone-tab {
 }
 .phone__shot.is-current { opacity: 1; }
 
+/* Notes — Figma "screen=notes": one note on cream paper, editable throughout. */
+.phone__notes {
+  display: flex;
+  flex-direction: column;
+  padding: calc(72 * var(--scale)) calc(24 * var(--scale)) calc(48 * var(--scale));
+  background: var(--note);
+}
+.notes__date {
+  margin: 0 0 calc(14 * var(--scale));
+  font-size: calc(12 * var(--scale));
+  text-align: center;
+  color: color-mix(in srgb, var(--forest) 50%, transparent);
+}
+.notes__page {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  color: var(--note-ink);
+  font-size: calc(17 * var(--scale));
+  line-height: calc(25 * var(--scale));
+  caret-color: var(--note-ink);
+  cursor: text;
+}
+.notes__page.is-pointer:focus-visible { outline: none; }  /* opened by mouse or touch; the caret shows focus */
+.notes__page > * { margin: 0 0 calc(14 * var(--scale)); }
+.notes__title {
+  font-size: calc(30 * var(--scale));
+  line-height: 1.2;
+  font-weight: 700;
+  font-style: italic;
+}
+.notes__prompt { margin-top: calc(25 * var(--scale)); }  /* a blank line above, as in Figma */
+
 /* The home indicator, redrawn over the screenshot; tapping it goes home. */
 .phone__home {
   position: absolute;
@@ -1153,6 +1202,14 @@ body.phone-away .phone-tab {
     gap: 8px;
   }
   .detail__screens img { border-radius: 12px; }
+  .detail__shots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    gap: 8px;
+    max-height: none;
+  }
+  .detail__shots img { width: 100%; height: auto; border-radius: 12px; }
 
   .topbar { top: 16px; }
 

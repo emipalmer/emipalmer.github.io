@@ -39,6 +39,7 @@ CSS custom property names match the Figma variable names exactly.
 | `--dock` | `#B9CFB6` | phone dock |
 | `--bezel` | `#5A5675` | phone rail |
 | `--pink` / `--peach` | `#CF8D87` / `#FECFBD` | links-screen banner; peach also tints the ambient background |
+| `--note` / `--note-ink` | `#FDF7E2` / `#736E37` | notes app paper and text (4.9:1) |
 | `--error` | `#A14A44` | form errors — the pink darkened until it warns |
 
 **Device chrome** — `--white`, `--island`, `--rail-1…4` — are code-only tokens for
@@ -92,6 +93,19 @@ into the phone at 1:1 with no scaling.
 A tile always means "launch something"; screens group them. The grid must not
 change meaning depending on which page you are on — people learn it once on home.
 
+**Notes app** (Figma `screen=notes`). The navigation screen's fifth tile opens
+one note over the whole phone screen: today's date, a bold italic title, a few
+dash lines and "add more notes here:" with an empty line under it. The whole
+note, title included, is one editable text box. Visitors can type, select and
+delete anything, and the caret starts on the empty line. Edits stay until the
+page reloads, so every visitor starts from Mia's words. Paste comes in as plain
+text. The home bar or Escape closes it, and the phone's arrow keys and swipe
+ignore input inside it. The focus ring shows when the note is opened from the
+keyboard. A mouse or touch open hides it, because a text box always counts as
+focus-visible and the ring would box the note the whole time someone types;
+the caret shows focus instead. Below 900px there is no phone, so no notes: it
+is a toy, not a page. Copy lives in `CONTENT.notes`.
+
 **Dynamic Island, side buttons, brushed rail.** The home indicator line is part of
 the chrome; when a full-screen screenshot covers the screen, redraw the indicator
 on top of it.
@@ -130,6 +144,10 @@ silent fallback to home. A silent fallback reads as the link being broken.
 the image gives up height first; if it would drop below 120px it steps aside
 until the window has room. Below 900px the page scrolls, the image runs full
 width, and ESDRS and ReVibe's phone screens sit in the column as a strip.
+**Star's screenshots sit in the page, not the phone** (`shots`): real iMessage
+threads under the write-up, sharing the height that is left, side by side.
+The calendar one is cropped after Wednesday's first line, so no names, venues
+or weekend plans go public.
 The whole project card links to its detail page; "read more →" shares the tag
 row.
 

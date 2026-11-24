@@ -293,6 +293,11 @@
       writeup.append(strip);
     }
     project.body.forEach(text => writeup.append(el('p', { text })));
+    if (project.shots) {
+      const row = el('div', { className: 'detail__shots' });
+      project.shots.forEach(shot => row.append(el('img', { attrs: { src: shot.src, alt: shot.alt, loading: 'lazy' } })));
+      writeup.append(row);
+    }
     // Outside links (a demo video, a repo) share one row with the tags, so
     // a project with links needs no extra height on a desktop that never scrolls.
     const foot = el('div', { className: 'detail__foot' });
@@ -750,18 +755,20 @@
     return span;
   }
 
-  /** Build one tile button (site route or external link). */
+  /** Build one tile button (site route, external link, or an app on the phone). */
   function buildTile(tile) {
     const li = el('li');
     const isLink = Boolean(tile.href);
 
     const node = isLink
       ? el('a', { className: 'tile', attrs: { ...linkAttrs(tile.href), 'aria-label': tile.label } })
-      : el('button', { className: 'tile', attrs: {
-          type: 'button',
-          'data-route': tile.route,
-          'aria-label': `Go to ${tile.label}`
-        }});
+      : tile.app
+        ? el('button', { className: 'tile', attrs: { type: 'button', 'data-app': tile.app, 'aria-label': `Open ${tile.label}` } })
+        : el('button', { className: 'tile', attrs: {
+            type: 'button',
+            'data-route': tile.route,
+            'aria-label': `Go to ${tile.label}`
+          }});
 
     node.append(icon(tile.icon));
     li.append(node);
@@ -825,7 +832,7 @@
 
   function markPhonePager(index, count) {
     els.prev.disabled = index === 0;
-    els.next.disabled = index === count - 1;
+    els.next.disabled = index >= count - 1;
     Array.from(els.dots.children).forEach((dot, i) => dot.setAttribute('aria-selected', String(i === index)));
   }
 
@@ -887,22 +894,17 @@
   }
 
   /* --- Phone demo ----------------------------------------------------------
-     On esdrs and ReVibe's detail pages the phone shows that project's screens
-     at 1:1 (both are designed at 393x852, like the phone). The chevrons page
-     through them; the home bar goes back to the home screens. The page column
-     stays on the detail either way, and leaving it closes the demo.
+     Something shown over the whole phone screen, with a home bar to close it.
+     On esdrs and ReVibe's detail pages it is that project's screens at 1:1
+     (both are designed at 393x852, like the phone); the
+     chevrons page through them, and leaving the detail closes the demo. The
+     notes tile opens the notes app the same way.
   ------------------------------------------------------------------------ */
 
-  let demo = null;  // { name, node, shots, index } while a demo is on the phone
+  let demo = null;  // { name, node, shots, index, onClose } while something is on the phone
 
-  function openDemo(project) {
+  function showOnPhone(name, node, shots = [], onClose = null) {
     closeDemo();
-    const node = el('div', { className: 'phone__demo', attrs: { role: 'group', 'aria-label': `${project.name} screens` } });
-    const shots = project.screens.map(shot => {
-      const img = el('img', { className: 'phone__shot', attrs: { src: shot.src, alt: shot.alt } });
-      node.append(img);
-      return img;
-    });
     const home = el('button', { className: 'phone__home', attrs: { type: 'button', 'aria-label': 'Back to the home screen' } });
     home.addEventListener('click', closeDemo);
     node.append(home);
@@ -910,18 +912,81 @@
     // Everything under the demo is out of reach until it closes.
     els.screenBox.querySelectorAll(':scope > *').forEach(child => { child.inert = true; });
     els.screenBox.append(node);
-    demo = { name: project.name, node, shots, index: 0 };
+    demo = { name, node, shots, index: 0, onClose };
     renderPhoneDots();
     phoneGo(0);
   }
 
+  function openDemo(project) {
+    const node = el('div', { className: 'phone__demo', attrs: { role: 'group', 'aria-label': `${project.name} screens` } });
+    const shots = project.screens.map(shot => {
+      const img = el('img', { className: 'phone__shot', attrs: { src: shot.src, alt: shot.alt } });
+      node.append(img);
+      return img;
+    });
+    showOnPhone(project.name, node, shots);
+  }
+
+  /* Notes: one note anyone can edit. The page is built once, so a visitor's
+     edits survive closing and reopening it, and are gone on reload. */
+  let notesPage = null;
+
+  function buildNotes() {
+    const n = CONTENT.notes;
+    const now = new Date();
+    const when = `${now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })} at ` +
+      now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    const date = el('p', { className: 'notes__date', text: when });
+    const page = el('div', { className: 'notes__page', attrs: {
+      contenteditable: 'true', role: 'textbox', 'aria-multiline': 'true',
+      'aria-label': n.label, spellcheck: 'false'
+    }});
+    page.append(el('h2', { className: 'notes__title', text: n.title }));
+    n.lines.forEach(line => page.append(el('p', { text: line })));
+    page.append(el('p', { className: 'notes__prompt', text: n.prompt }), el('p'));
+    page.lastChild.append(el('br'));  // an empty line to type on
+
+    // Plain text only: a paste keeps the note's own look.
+    page.addEventListener('paste', e => {
+      e.preventDefault();
+      document.execCommand('insertText', false, e.clipboardData.getData('text/plain'));
+    });
+    page.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { e.stopPropagation(); closeDemo(); }
+    });
+    // A text field always counts as :focus-visible, so the ring would box
+    // the whole note while someone types. Keep it for keyboard arrivals only.
+    page.addEventListener('pointerdown', () => page.classList.add('is-pointer'));
+    page.addEventListener('blur', () => page.classList.remove('is-pointer'));
+    return { date, page };
+  }
+
+  function openNotes(tile, byPointer) {
+    if (!notesPage) notesPage = buildNotes();
+    notesPage.page.classList.toggle('is-pointer', byPointer);
+    const node = el('div', { className: 'phone__demo phone__notes', attrs: { role: 'group', 'aria-label': 'notes' } });
+    node.append(notesPage.date, notesPage.page);
+    showOnPhone('notes', node, [], () => tile.focus({ preventScroll: true }));
+    document.execCommand('defaultParagraphSeparator', false, 'p');
+    // Caret at the end, ready to type.
+    notesPage.page.focus({ preventScroll: true });
+    const range = document.createRange();
+    range.selectNodeContents(notesPage.page.lastChild);
+    range.collapse(false);
+    const sel = getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
   function closeDemo() {
     if (!demo) return;
+    const { onClose } = demo;
     demo.node.remove();
     demo = null;
     els.screenBox.querySelectorAll(':scope > *').forEach(child => { child.inert = false; });
     renderPhoneDots();
     goToScreen(screenIndex);
+    if (onClose) onClose();
   }
 
   /** Page the phone: the demo's screens while one is open, else the home screens. */
@@ -1030,6 +1095,8 @@
     document.addEventListener('click', event => {
       const tile = event.target.closest('.tile[data-route]');
       if (tile) location.hash = tile.dataset.route;
+      const app = event.target.closest('.tile[data-app]');
+      if (app && app.dataset.app === 'notes') openNotes(app, event.detail > 0);  // detail is 0 for Enter/Space
     });
 
     els.prev.addEventListener('click', () => phoneGo(phoneIndex() - 1));
@@ -1056,7 +1123,7 @@
 
     // Arrow keys page the phone, matching the "swipe left and right" note.
     document.addEventListener('keydown', event => {
-      if (event.target.matches('input, textarea')) return;
+      if (event.target.matches('input, textarea') || event.target.isContentEditable) return;
       if (event.key === 'Escape' && !phoneAway) { setPhoneAway(true, true); return; }
       if (phoneAway) return; // arrows do nothing while it's tucked away
       if (event.key === 'ArrowRight') phoneGo(phoneIndex() + 1);
@@ -1065,7 +1132,10 @@
 
     // Touch swipe on the phone screen itself.
     let touchStartX = null;
-    els.screenBox.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    els.screenBox.addEventListener('touchstart', e => {
+      // Dragging inside the note selects text; it doesn't page the phone.
+      touchStartX = e.target.isContentEditable || e.target.closest('[contenteditable]') ? null : e.touches[0].clientX;
+    }, { passive: true });
     els.screenBox.addEventListener('touchend', e => {
       if (touchStartX === null) return;
       const delta = e.changedTouches[0].clientX - touchStartX;

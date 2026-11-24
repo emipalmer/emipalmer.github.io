@@ -62,7 +62,8 @@ assets/             resume.pdf; photos/ holds the site photos
 
 - The app-open panel (tile expands into a full-screen panel on the phone).
   Tapping a tile navigates the page and nothing else. Frames kept in Figma
-  prefixed `v2 ·`.
+  prefixed `v2 ·`. The one exception is the notes tile, which opens the
+  editable note on the phone (see "Notes app" in `docs/design.md`).
 - Panel-follows-nav, and panel-survives-scroll. Both only matter with panels.
 - The resume button in the top-right corner. Resume is a chip on the home page.
 - The lily background art and the sage backdrop panel. The page is mint, with
