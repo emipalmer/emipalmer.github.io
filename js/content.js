@@ -184,11 +184,13 @@ const CONTENT = {
     {
       slug: 'this-site', name: 'This site', tile: 'this site', icon: 'site',
       meta: ['2026', 'design & build'],
-      blurb: 'Designed in Figma and built from scratch — the phone is the navigation.',
+      blurb: 'Designed in Figma. Built using HTML, CSS, and JavaScript with Claude Code',
       short: 'Built from scratch; the phone is the nav.',
       tags: ['HTML/CSS', 'JavaScript', 'Figma'],
-      body: ['Designed in Figma!']
-    },
+      body: ['My portfolio website! I wanted to create something that reflected my style while still being intuitive and engaging. Designed in Figma!',
+        'I originally started out with sketching out my concept using Canva, before building it in Figma and then coding it with HTML, CSS, and JavaScript.'
+      ]
+          },
     {
       slug: 'revibe', name: 'ReVibe', tile: 'revibe', icon: 'revibe',
       meta: ['feb 2025', 'ui/ux design'],
